@@ -35,7 +35,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { cartCount } = useContext(CartContext);
-  const location = useLocation(); // বর্তমান পাথ চেক করতে
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
@@ -54,13 +54,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // কার্ট পেজে সবসময় bg-white, অন্য পেজে স্ক্রল-ভিত্তিক স্টাইল
+
   const isCartPage = location.pathname === '/cart';
   const navStyles = isCartPage
     ? 'bg-white text-black shadow-md'
     : isScrolled || isMenuOpen
-    ? 'bg-white text-black shadow-md'
-    : 'bg-transparent text-white';
+      ? 'bg-white text-black shadow-md'
+      : 'bg-transparent text-white';
 
   return (
     <header className={`fixed w-full top-0 left-0 z-50 ease-in-out ${navStyles}`}>
