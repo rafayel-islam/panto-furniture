@@ -1,6 +1,7 @@
 import React from 'react'
 import aboutBgImg from "../../assets/about-background.jpg"
-import Testimonials from '../Home/Testimonials'
+import Testimonials from '../home/Testimonials'
+
 
 const About = () => {
   return (
