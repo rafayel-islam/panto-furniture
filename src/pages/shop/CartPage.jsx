@@ -61,7 +61,7 @@ const CartPage = () => {
                                 <img
                                     src={getImgUrl(`${item.imageUrl}`)}
                                     alt={item.name}
-                                    className="object-cover w-24 h-auto ml-4 rounded"
+                                    className="object-cover w-32 h-auto ml-4 rounded"
                                 />
                             </li>
                         ))}
