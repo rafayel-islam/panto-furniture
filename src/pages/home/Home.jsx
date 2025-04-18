@@ -1,10 +1,11 @@
 import React from 'react'
 import Hero from './Hero'
-import WhyChoose from '..home/WhyChoose'
+import WhyChoose from './WhyChoose'
 import Products from '../shop/Products'
-import Experiences from '..home/Experiences'
-import Materials from '../home/Materials'
-import Testimonials from '../home/Testimonials'
+import Experiences from './Experiences'
+import Materials from './Materials'
+import Testimonials from './Testimonials'
+
 
 const Home = () => {
   return (
