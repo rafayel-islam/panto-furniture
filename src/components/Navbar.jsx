@@ -55,8 +55,8 @@ const Navbar = () => {
   }, []);
 
 
-  const isCartPage = location.pathname === '/cart';
-  const navStyles = isCartPage
+  const isCartOrCheckoutPage = location.pathname === '/cart' || location.pathname === '/checkout';
+  const navStyles = isCartOrCheckoutPage
     ? 'bg-white text-black shadow-md'
     : isScrolled || isMenuOpen
       ? 'bg-white text-black shadow-md'

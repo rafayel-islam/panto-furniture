@@ -1,8 +1,38 @@
 import React from 'react'
 import contactBgImg from "../../assets/contact-background.jpg"
 import { FaWhatsapp } from "react-icons/fa";
+import Swal from 'sweetalert2'
 
 const Contact = () => {
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+
+    formData.append("access_key", "2ba00610-7d76-4efd-84d4-992505505f4b");
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: json
+    }).then((res) => res.json());
+
+    if (res.success) {
+      Swal.fire({
+        title: "Thank you!",
+        text: "Your message has been sent successfully.",
+        icon: "success"
+      });
+    }
+  };
+
+
   return (
     <section>
 
@@ -26,7 +56,7 @@ const Contact = () => {
           <p>If you have any questions about our furniture collections — beds, sofas, lamps, chairs — feel free to reach out!</p>
           <div>
             <p><strong>📍 Address:</strong> 123 Furniture Street, Dhaka, Bangladesh</p>
-            <p><strong>📞 Phone:</strong> +880 1234 567890</p>
+            <p><strong>📞 Phone:</strong> +880 1751 876070</p>
             <p><strong>✉️ Email:</strong> support@panto.com</p>
           </div>
           <div>
@@ -37,7 +67,7 @@ const Contact = () => {
 
           {/* WhatsApp Button */}
           <a
-            href="https://wa.me/8801234567890"
+            href="https://wa.me/8801751876070"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 mt-6 text-white transition bg-green-500 rounded-md hover:bg-green-600"
@@ -48,7 +78,7 @@ const Contact = () => {
         </div>
 
         {/* Form */}
-        <form className="p-8 space-y-6 bg-gray-100 shadow rounded-xl">
+        <form onSubmit={onSubmit} className="p-8 space-y-6 bg-gray-100 shadow rounded-xl">
           <div>
             <label className="block mb-1 font-medium text-gray-700">Name</label>
             <input
@@ -56,6 +86,7 @@ const Contact = () => {
               required
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
               placeholder="Your Name"
+              name='name'
             />
           </div>
 
@@ -66,6 +97,7 @@ const Contact = () => {
               required
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
               placeholder="Your Email"
+              name='email'
             />
           </div>
 
@@ -76,6 +108,7 @@ const Contact = () => {
               required
               className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500"
               placeholder="Your Message"
+              name='message'
             ></textarea>
           </div>
 
